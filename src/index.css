@@ -114,7 +114,7 @@
 }
 
 .glass-panel {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  @apply backdrop-blur-xl bg-white/90 border border-gray-200 shadow-lg;
 }
 
 .typing-indicator span {

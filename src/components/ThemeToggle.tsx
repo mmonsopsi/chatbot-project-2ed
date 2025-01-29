@@ -13,6 +13,7 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // Only render after mounting to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);

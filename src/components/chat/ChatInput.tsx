@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SendHorizontal, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -36,14 +36,6 @@ const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
         className="bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground/50"
         disabled={disabled}
       />
-      <Button 
-        type="submit" 
-        size="icon"
-        disabled={disabled || !message.trim()}
-        className="shrink-0 bg-white/10 hover:bg-white/20"
-      >
-        <SendHorizontal className="h-5 w-5" />
-      </Button>
     </form>
   );
 };

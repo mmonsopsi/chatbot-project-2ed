@@ -3,7 +3,7 @@ import ChatMessage from "@/components/chat/ChatMessage";
 import ChatInput from "@/components/chat/ChatInput";
 import TypingIndicator from "@/components/chat/TypingIndicator";
 import ApiKeyModal from "@/components/ApiKeyModal";
-import { useToast } from "@/components/ui/use-toast";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface Message {
   text: string;
@@ -14,23 +14,16 @@ const Index = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasApiKey, setHasApiKey] = useState(false);
-  const { toast } = useToast();
 
   const handleApiKeySubmit = (apiKey: string) => {
-    // Aqui você pode adicionar validação adicional da API key se necessário
     localStorage.setItem("deepseek_api_key", apiKey);
     setHasApiKey(true);
-    toast({
-      title: "Sucesso",
-      description: "API key configurada com sucesso!",
-    });
   };
 
   const handleSendMessage = async (message: string) => {
     setMessages(prev => [...prev, { text: message, isAI: false }]);
     setIsLoading(true);
 
-    // Simula uma resposta do AI - Substitua isso com a integração real do Deepseek
     setTimeout(() => {
       setMessages(prev => [...prev, { 
         text: "Esta é uma resposta simulada. Implemente a integração com o Deepseek aqui.", 
@@ -42,6 +35,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col h-screen max-w-[700px] mx-auto px-4">
+      <ThemeToggle />
       <ApiKeyModal 
         isOpen={!hasApiKey} 
         onApiKeySubmit={handleApiKeySubmit} 

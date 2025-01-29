@@ -7,11 +7,11 @@ interface ChatMessageProps {
 
 const ChatMessage = ({ message, isAI = false }: ChatMessageProps) => {
   return (
-    <div className={cn("flex w-full mb-4", isAI ? "justify-start" : "justify-end")}>
+    <div className={cn("flex w-full mb-6", isAI ? "justify-start" : "justify-end")}>
       <div
         className={cn(
-          "chat-bubble glass-panel",
-          isAI ? "bg-transparent" : "bg-primary/10"
+          "chat-bubble",
+          isAI ? "bg-transparent" : "bg-[#1E2A4A] text-white"
         )}
       >
         <p className="text-sm md:text-base leading-relaxed">{message}</p>

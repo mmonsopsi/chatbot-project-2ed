@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, Plus } from "lucide-react";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -20,19 +20,27 @@ const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 p-4 glass-panel rounded-lg">
+    <form onSubmit={handleSubmit} className="flex gap-2 p-2 glass-panel rounded-full">
+      <Button 
+        type="button" 
+        size="icon" 
+        variant="ghost"
+        className="shrink-0 hover:bg-white/10"
+      >
+        <Plus className="h-5 w-5" />
+      </Button>
       <Input
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Type a message..."
-        className="bg-background/50"
+        placeholder="Mensagem para o Copilot..."
+        className="bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-muted-foreground/50"
         disabled={disabled}
       />
       <Button 
         type="submit" 
         size="icon"
         disabled={disabled || !message.trim()}
-        className="shrink-0"
+        className="shrink-0 bg-white/10 hover:bg-white/20"
       >
         <SendHorizontal className="h-5 w-5" />
       </Button>

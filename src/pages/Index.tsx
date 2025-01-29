@@ -27,7 +27,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col h-screen max-w-[700px] mx-auto px-4">
-      <main className="flex-1 overflow-y-auto py-4 space-y-4">
+      <main className="flex-1 overflow-y-auto py-8 space-y-6">
         {messages.map((message, index) => (
           <ChatMessage
             key={index}
@@ -37,7 +37,7 @@ const Index = () => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="chat-bubble glass-panel bg-transparent">
+            <div className="chat-bubble bg-transparent">
               <TypingIndicator />
             </div>
           </div>

@@ -13,11 +13,9 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSendMessage = async (message: string) => {
-    // Add user message
     setMessages(prev => [...prev, { text: message, isAI: false }]);
     setIsLoading(true);
 
-    // Simulate AI response (replace with actual AI integration)
     setTimeout(() => {
       setMessages(prev => [...prev, { 
         text: "This is a simulated AI response. Replace this with actual AI integration.", 
@@ -28,7 +26,7 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen max-w-4xl mx-auto px-4">
+    <div className="flex flex-col h-screen max-w-[700px] mx-auto px-4">
       <main className="flex-1 overflow-y-auto py-4 space-y-4">
         {messages.map((message, index) => (
           <ChatMessage
@@ -39,7 +37,7 @@ const Index = () => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="chat-bubble glass-panel bg-secondary">
+            <div className="chat-bubble glass-panel bg-transparent">
               <TypingIndicator />
             </div>
           </div>

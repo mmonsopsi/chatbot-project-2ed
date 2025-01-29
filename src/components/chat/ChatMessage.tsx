@@ -11,7 +11,7 @@ const ChatMessage = ({ message, isAI = false }: ChatMessageProps) => {
       <div
         className={cn(
           "chat-bubble glass-panel",
-          isAI ? "bg-secondary" : "bg-primary/10"
+          isAI ? "bg-transparent" : "bg-primary/10"
         )}
       >
         <p className="text-sm md:text-base leading-relaxed">{message}</p>

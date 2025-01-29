@@ -1,11 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import ChatMessage from "@/components/chat/ChatMessage";
+import ChatInput from "@/components/chat/ChatInput";
+import TypingIndicator from "@/components/chat/TypingIndicator";
+
+interface Message {
+  text: string;
+  isAI: boolean;
+}
 
 const Index = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSendMessage = async (message: string) => {
+    // Add user message
+    setMessages(prev => [...prev, { text: message, isAI: false }]);
+    setIsLoading(true);
+
+    // Simulate AI response (replace with actual AI integration)
+    setTimeout(() => {
+      setMessages(prev => [...prev, { 
+        text: "This is a simulated AI response. Replace this with actual AI integration.", 
+        isAI: true 
+      }]);
+      setIsLoading(false);
+    }, 1000);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="flex flex-col h-screen max-w-4xl mx-auto px-4">
+      <main className="flex-1 overflow-y-auto py-4 space-y-4">
+        {messages.map((message, index) => (
+          <ChatMessage
+            key={index}
+            message={message.text}
+            isAI={message.isAI}
+          />
+        ))}
+        {isLoading && (
+          <div className="flex justify-start">
+            <div className="chat-bubble glass-panel bg-secondary">
+              <TypingIndicator />
+            </div>
+          </div>
+        )}
+      </main>
+      <div className="py-4">
+        <ChatInput onSend={handleSendMessage} disabled={isLoading} />
       </div>
     </div>
   );
